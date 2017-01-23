@@ -63,15 +63,14 @@ var app = {
            game.physics.arcade.collide(bola, paddleIA);
 
            if (victoria()) {
-            setTimeout(alert("Has pasado de nivel!"), 4000);
             siguienteNivel();
            } else if (victoriaIA()) {
-            setTimeout(alert("Has perdido!"), 4000);
             reiniciarNivel();
            }
         }
 
         function siguienteNivel() {
+            navigator.notification.confirm('Has ganado!', null, 'Victoria', 'Siguiente');
             reiniciarBola();
             dificultad++;
             puntJugador = 0;
@@ -82,6 +81,7 @@ var app = {
         }
 
         function reiniciarNivel() {
+            navigator.notification.confirm('Has perdido!', null, 'Derrota', 'Reintentar');
             reiniciarBola();
             puntJugador = 0;
             puntIA = 0;
